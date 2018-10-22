@@ -3,11 +3,11 @@
     require_once("templates/global-top.php");
 ?>
         <form action="../controllers/user.php" method="POST" onsubmit="onSubmit()">
-            <input type="text" name="firstName" placeholder="First name"/><br/>
-            <input type="text" name="lastName" placeholder="Last name"/><br/>
-            <input type="email" name="email" placeholder="E-mail"/><br/>
-            <input type="password" id="password" name="password" placeholder="Password"/><br/>
-            <input type="password" id="repeatPassword" placeholder="Repeat password"/><br/>
+            <input type="text" name="firstName" placeholder="First name" required/><br/>
+            <input type="text" name="lastName" placeholder="Last name" required/><br/>
+            <input type="email" name="email" placeholder="E-mail" required/><br/>
+            <input type="password" id="password" name="password" placeholder="Password" required/><br/>
+            <input type="password" id="repeatPassword" placeholder="Repeat password" required/><br/>
             <input type="submit" value="Register"/>
         </form>
 
