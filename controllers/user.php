@@ -12,6 +12,7 @@
             $user = new User($email, $password, $firstName, $lastName);
             $file = new File("users.json");
             $file->write($user);
+            header("Location: /?registered");
         }
         catch(Exception $ex) {
             echo json_encode(["error" => $ex->getMessage()], JSON_FORCE_OBJECT);
