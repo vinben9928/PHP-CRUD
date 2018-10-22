@@ -2,7 +2,7 @@
     $DOCUMENT_TITLE = "Register";
     require_once("templates/global-top.php");
 ?>
-        <form action="../controllers/user.php" method="POST" onsubmit="onSubmit()">
+        <form action="../controllers/user.php" method="POST" onsubmit="onSubmit(event)">
             <input type="text" name="firstName" placeholder="First name" required/><br/>
             <input type="text" name="lastName" placeholder="Last name" required/><br/>
             <input type="email" name="email" placeholder="E-mail" required/><br/>
@@ -15,7 +15,7 @@
             function onSubmit(event) {
                 if(document.getElementById("password").value !== document.getElementById("repeatPassword").value) {
                     event.preventDefault();
-                    alert("Passwords doesn't match!");
+                    alert("The passwords doesn't match!");
                 }
             }
         </script>
