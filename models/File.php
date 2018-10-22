@@ -17,7 +17,7 @@
         }
 
         public function read() {
-            $contents = file_get_contents($this-path);
+            $contents = file_get_contents($this->path);
             $contents = json_decode($contents);
             return $contents;
         }
@@ -26,7 +26,7 @@
             $data = $this->read();
             $data[] = $obj;
             $json = json_encode($data, JSON_PRETTY_PRINT);
-            file_put_contents($this-path, $json);
+            file_put_contents($this->path, $json);
         }
     }
 ?>
