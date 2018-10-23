@@ -21,12 +21,33 @@
             $contents = json_decode($contents);
             return $contents;
         }
+
+        public function readRaw() {
+            $contents = file_get_contents($this->path);
+            return $contents;
+        }
         
         public function write($obj) {
             $data = $this->read();
             $data[] = $obj;
             $json = json_encode($data, JSON_PRETTY_PRINT);
             file_put_contents($this->path, $json);
+        }
+
+        public function deleteObjectByProperty($property, $value) {
+            $contents = $this->read();
+            $count = count($contents);
+
+            for($i = 0; $i < $count; $i++) {
+                $obj = $contents[$i];
+
+                if(isset($obj[$property]) && $obj[$property] === $value) {
+                    array_splice($contents, $i, 1);
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 ?>

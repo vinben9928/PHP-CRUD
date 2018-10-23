@@ -1,6 +1,6 @@
 <?php
     $DOCUMENT_TITLE = "Register";
-    require_once("templates/global-top.php");
+    require_once(dirname(__DIR__) . "/templates/global-top.php");
 ?>
         <form action="../controllers/user.php" method="POST" onsubmit="onSubmit(event)">
             <input type="text" name="firstName" placeholder="First name" required/><br/>
@@ -20,5 +20,5 @@
             }
         </script>
 <?php
-    require_once("templates/global-bottom.php");
+    require_once(dirname(__DIR__) . "/templates/global-bottom.php");
 ?>

@@ -5,5 +5,12 @@
         "lastName": "Bengtsson",
         "email": "test@example.com",
         "password": "$2y$10$gNHx5AhHJl.cPMAqUhEAgOAV70DeiwyMnuW7hTULEXq3wsLgAkSuq"
+    },
+    {
+        "id": 1540292470544,
+        "firstName": "Simon",
+        "lastName": "Strandh",
+        "email": "simon@strandh.one",
+        "password": "$2y$10$z3SgViT0wjSXLEAc9rKzrOfvQS4zN3sJ2nGoHRoY4uTgO9E9gtK6e"
     }
 ]
