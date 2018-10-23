@@ -4,7 +4,7 @@
     require_once(dirname(__DIR__) . "/models/User.php");
 
     header("Access-Control-Allow-Origin: *");
-    header("Content-Type: application/json");
+    header("Content-Type: application/json; charset=UTF-8");
 
     $RequestMethod = $_SERVER["REQUEST_METHOD"];
 
@@ -14,6 +14,7 @@
         $lastName = $_POST["lastName"];
         $email = $_POST["email"];
         $password = $_POST["password"];
+        $deleteId = $_POST["deleteId"];
 
         if(isset($firstName) && isset($lastName) && isset($email) && isset($password)) {
             try {
@@ -25,6 +26,10 @@
             catch(Exception $ex) {
                 echo json_encode(["error" => $ex->getMessage()], JSON_FORCE_OBJECT);
             }
+        }
+        else if(isset($deleteId)) {
+            $obj = json_encode(["idtodelete" => $deleteId], JSON_FORCE_OBJECT);
+            echo $obj;
         }
         else {
             http_response_code(400);
