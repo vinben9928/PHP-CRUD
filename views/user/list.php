@@ -5,7 +5,7 @@
 
         <script type="text/javascript">
             $(document).ready(function() {
-                $.get("<?php echo RELATIVE_DIR . "/controllers/user.php"; ?>", printData);
+                $.get("<?php echo RELATIVE_DIR; ?>/controllers/user.php", printData);
             });
 
             function printData(data) {
