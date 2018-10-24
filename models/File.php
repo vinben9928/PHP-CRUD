@@ -41,8 +41,12 @@
             for($i = 0; $i < $count; $i++) {
                 $obj = $contents[$i];
 
-                if(isset($obj[$property]) && $obj[$property] === $value) {
+                if(isset($obj->$property) && $obj->$property == $value) {
                     array_splice($contents, $i, 1);
+
+                    $json = json_encode($contents, JSON_PRETTY_PRINT);
+                    file_put_contents($this->path, $json);
+                    
                     return true;
                 }
             }

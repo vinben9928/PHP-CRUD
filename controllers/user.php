@@ -28,8 +28,14 @@
             }
         }
         else if(isset($deleteId)) {
-            $obj = json_encode(["idtodelete" => $deleteId], JSON_FORCE_OBJECT);
-            echo $obj;
+            $file = new File("users.json");
+
+            if($file->deleteObjectByProperty("id", $deleteId)) {
+                echo json_encode(["success" => true], JSON_FORCE_OBJECT);
+            }
+            else {
+                echo json_encode(["error" => "User not found!"], JSON_FORCE_OBJECT);
+            }
         }
         else {
             http_response_code(400);

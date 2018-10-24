@@ -16,7 +16,12 @@
 
         <script type="text/javascript">
             $(document).ready(function() {
-                $.get("<?php echo RELATIVE_DIR; ?>/controllers/user.php", printData);
+                $.ajax({
+                    url: "<?php echo RELATIVE_DIR; ?>/controllers/user.php",
+                    type: "GET",
+                    cache: false,
+                    success: printData
+                });
             });
 
             $(document).ajaxError(function(event, jqxhr, settings, thrownError) {
@@ -41,15 +46,34 @@
                     var deleteButton = document.createElement("button");
                     
                     deleteButton.innerText = "Delete";
-                    deleteButton.addEventListener("click", function() { deleteUser(id); });
+                    deleteButton.addEventListener("click", deleteUser);
+                    deleteButton.setAttribute("targetId", id);
 
                     deleteButtonCell.appendChild(deleteButton);
                 }
             }
 
-            function deleteUser(id) {
-                $.post("<?php echo RELATIVE_DIR; ?>/controllers/user.php", { deleteId: id }, function(data) {
-                    console.log(data);
+            function deleteUser() {
+                $.post("<?php echo RELATIVE_DIR; ?>/controllers/user.php", { deleteId: this.getAttribute("targetId") }, function(data) {
+                    if(typeof data === "string") {
+                        try {
+                            data = JSON.decode(data);
+                        }
+                        catch(error) {
+                            alert("ERROR: Invalid response received from server!");
+                            return;
+                        }
+                    }
+
+                    if(!isNull(data.error)) {
+                        alert(data.error);
+                        return;
+                    }
+
+                    if(!isNull(data.success) && data.success === true) {
+                        alert("Success!");
+                        window.location.reload(true);
+                    }
                 });
             }
         </script>

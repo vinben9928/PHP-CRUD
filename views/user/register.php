@@ -2,7 +2,7 @@
     $DOCUMENT_TITLE = "Register";
     require_once(dirname(__DIR__) . "/templates/global-top.php");
 ?>
-        <form action="../controllers/user.php" method="POST" onsubmit="onSubmit(event)">
+        <form action="../../controllers/user.php" method="POST" onsubmit="onSubmit(event)">
             <input type="text" name="firstName" placeholder="First name" required/><br/>
             <input type="text" name="lastName" placeholder="Last name" required/><br/>
             <input type="email" name="email" placeholder="E-mail" required/><br/>

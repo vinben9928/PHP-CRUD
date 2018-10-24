@@ -1,16 +1,30 @@
 [
     {
-        "id": 1540198760761,
+        "id": 1540365839334,
         "firstName": "Vincent",
         "lastName": "Bengtsson",
-        "email": "test@example.com",
-        "password": "$2y$10$gNHx5AhHJl.cPMAqUhEAgOAV70DeiwyMnuW7hTULEXq3wsLgAkSuq"
+        "email": "temp@example.com",
+        "password": "$2y$10$H9SY6Sjq8lJ63SOYsjsqGONcuM3aNPPKBaKDA2i15AuCW4nkhSG82"
     },
     {
-        "id": 1540292470544,
+        "id": 1540365856990,
         "firstName": "Simon",
         "lastName": "Strandh",
         "email": "simon@strandh.one",
-        "password": "$2y$10$z3SgViT0wjSXLEAc9rKzrOfvQS4zN3sJ2nGoHRoY4uTgO9E9gtK6e"
+        "password": "$2y$10$Nrem5vpIdTEyqgFbnodwSu\/hatlXGGCxE8Sf0vPnJPQ8mC1C5vBKu"
+    },
+    {
+        "id": 1540365872582,
+        "firstName": "Fredric",
+        "lastName": "Persson",
+        "email": "freddeP@gmail.com",
+        "password": "$2y$10$49U8j0xhiOUwTDpbdKScTeK0hSEdXfmsTRgjvDGZpu6\/ueZGLqj5a"
+    },
+    {
+        "id": 1540365888220,
+        "firstName": "Jimmy",
+        "lastName": "Nguyen",
+        "email": "jimman@gmail.com",
+        "password": "$2y$10$lzHX23GFic45AhC33piTB.ZwWQkbcDnatZNoSA.KuXupURyZr.XtW"
     }
 ]
