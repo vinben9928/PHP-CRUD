@@ -42,14 +42,26 @@
                     row.insertCell(-1).innerText = user.lastName;
                     row.insertCell(-1).innerText = user.email;
                     
-                    var deleteButtonCell = row.insertCell(-1);
-                    var deleteButton = document.createElement("button");
+                    var buttonCell = row.insertCell(-1);
+                    var separatorSpan = document.createElement("span");
+                    var editButton = document.createElement("a");
+                    var deleteButton = document.createElement("a");
+                    
+                    separatorSpan.innerText = " | ";
+
+                    editButton.innerText = "Edit";
+                    editButton.href = "javascript:void(0)";
+                    editButton.addEventListener("click", deleteUser);
+                    editButton.setAttribute("targetId", id);
                     
                     deleteButton.innerText = "Delete";
+                    deleteButton.href = "javascript:void(0)";
                     deleteButton.addEventListener("click", deleteUser);
                     deleteButton.setAttribute("targetId", id);
 
-                    deleteButtonCell.appendChild(deleteButton);
+                    buttonCell.appendChild(editButton);
+                    buttonCell.appendChild(separatorSpan);
+                    buttonCell.appendChild(deleteButton);
                 }
             }
 
@@ -71,7 +83,6 @@
                     }
 
                     if(!isNull(data.success) && data.success === true) {
-                        alert("Success!");
                         window.location.reload(true);
                     }
                 });

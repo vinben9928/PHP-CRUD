@@ -1,4 +1,25 @@
-#userTable td + td
+#userTable
+{
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#userTable td, #userTable th
+{
+    padding: 8px;
+}
+
+#userTable th
+{
+    text-align: left;
+}
+
+#userTable tr
+{
+    border-bottom: 1px solid #000000;
+}
+
+/*#userTable td + td
 {
     border-left: 1px solid #000000;
-}
+}*/
