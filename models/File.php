@@ -53,5 +53,20 @@
 
             return false;
         }
+
+        public function getObjectByProperty($property, $value) {
+            $contents = $this->read();
+            $count = count($contents);
+
+            for($i = 0; $i < $count; $i++) {
+                $obj = $contents[$i];
+
+                if(isset($obj->$property) && $obj->$property == $value) {
+                    return $obj;
+                }
+            }
+
+            return null;
+        }
     }
 ?>

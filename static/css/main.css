@@ -14,9 +14,19 @@
     text-align: left;
 }
 
-#userTable tr
+#userTable tr:first-child
 {
-    border-bottom: 1px solid #000000;
+    border-bottom: 2px solid #BBBBBB;
+}
+
+#userTable tr:not(:first-child)
+{
+    border-bottom: 1px solid #BBBBBB;
+}
+
+#userTable input[type=text]
+{
+    max-width: 100%;
 }
 
 /*#userTable td + td

@@ -14,14 +14,35 @@
         $lastName = $_POST["lastName"];
         $email = $_POST["email"];
         $password = $_POST["password"];
+
+        $editId = $_POST["editId"];
         $deleteId = $_POST["deleteId"];
 
-        if(isset($firstName) && isset($lastName) && isset($email) && isset($password)) {
+        if(isset($firstName) && isset($lastName) && isset($email) && (isset($password) || isset($editId))) {
             try {
-                $user = new User($email, $password, $firstName, $lastName);
-                $file = new File("users.json");
-                $file->write($user);
-                header("Location: " . RELATIVE_DIR . "/?registered");
+                if(!isset($editId)) {
+                    //New user.
+                    $user = new User($email, $password, $firstName, $lastName);
+                    $file = new File("users.json");
+                    $file->write($user);
+                    header("Location: " . RELATIVE_DIR . "/?registered");
+                }
+                else {
+                    //Edit user.
+                    $file = new File("users.json");
+                    $user = $file->getObjectByProperty("id", $editId);
+
+                    if($user != null) {
+                        $user->firstName = $firstName;
+                        $user->lastName = $lastName;
+                        $user->email = $email;
+
+                        echo json_encode(["success" => true], JSON_FORCE_OBJECT);
+                    }
+                    else {
+                        echo json_encode(["error" => "User not found!"], JSON_FORCE_OBJECT);
+                    }
+                }
             }
             catch(Exception $ex) {
                 echo json_encode(["error" => $ex->getMessage()], JSON_FORCE_OBJECT);
@@ -46,5 +67,9 @@
     {
         $file = new File("users.json");
         echo $file->readRaw();
+    }
+    else {
+        http_response_code(400);
+        echo json_encode(["error" => "Bad request!"], JSON_FORCE_OBJECT);
     }
 ?>
