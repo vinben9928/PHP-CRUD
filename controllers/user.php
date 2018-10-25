@@ -37,6 +37,8 @@
                         $user->lastName = $lastName;
                         $user->email = $email;
 
+                        $file->setObjectByProperty("id", $editId, $user);
+
                         echo json_encode(["success" => true], JSON_FORCE_OBJECT);
                     }
                     else {

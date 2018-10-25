@@ -35,6 +35,19 @@
         }
 
         public function deleteObjectByProperty($property, $value) {
+            $index = $this->getIndexByProperty($property, $value);
+            if($index < 0) { return false; }
+
+            $contents = $this->read();
+            array_splice($contents, $index, 1);
+
+            $json = json_encode($contents, JSON_PRETTY_PRINT);
+            file_put_contents($this->path, $json);
+                    
+            return true;
+        }
+
+        public function getIndexByProperty($property, $value) {
             $contents = $this->read();
             $count = count($contents);
 
@@ -42,31 +55,32 @@
                 $obj = $contents[$i];
 
                 if(isset($obj->$property) && $obj->$property == $value) {
-                    array_splice($contents, $i, 1);
-
-                    $json = json_encode($contents, JSON_PRETTY_PRINT);
-                    file_put_contents($this->path, $json);
-                    
-                    return true;
+                    return $i;
                 }
             }
 
-            return false;
+            return -1;
         }
 
         public function getObjectByProperty($property, $value) {
+            $index = $this->getIndexByProperty($property, $value);
+            if($index < 0) { return null; }
+
             $contents = $this->read();
-            $count = count($contents);
+            return $contents[$index];
+        }
 
-            for($i = 0; $i < $count; $i++) {
-                $obj = $contents[$i];
+        public function setObjectByProperty($property, $value, $obj) {
+            $index = $this->getIndexByProperty($property, $value);
+            if($index < 0) { return false; }
 
-                if(isset($obj->$property) && $obj->$property == $value) {
-                    return $obj;
-                }
-            }
+            $contents = $this->read();
+            $contents[$index] = $obj;
 
-            return null;
+            $json = json_encode($contents, JSON_PRETTY_PRINT);
+            file_put_contents($this->path, $json);
+
+            return true;
         }
     }
 ?>
