@@ -105,11 +105,6 @@
                     textBox.id = ids[i] + id;
                     textBox.type = (ids[i] === "em" ? "email" : "text");
                     textBox.value = cells[i + 1].innerText;
-
-                    //textBox.style.width = cells[i + 1].offsetWidth + "px";
-                    textBox.style.display = "inline";
-                    textBox.style.boxSizing = "border-box";
-
                     textBox.required = true;
 
                     editRow.insertCell(-1).appendChild(textBox);
