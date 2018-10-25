@@ -29,6 +29,15 @@
                 }
                 else {
                     //Edit user.
+                    if(strlen($firstName) == 0 || strlen($lastName) == 0 || strlen($email) == 0) {
+                        echo json_encode(["error" => "Please fill in all the required fields!"], JSON_FORCE_OBJECT);
+                        return;
+                    }
+                    else if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                        echo json_encode(["error" => "Invalid e-mail address!"], JSON_FORCE_OBJECT);
+                        return;
+                    }
+
                     $file = new File("users.json");
                     $user = $file->getObjectByProperty("id", $editId);
 
